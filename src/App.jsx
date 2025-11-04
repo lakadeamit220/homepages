@@ -1,9 +1,10 @@
 import "./App.css";
+import KYCHome from "./components/kyc/KYCHome";
 
 function App() {
   return (
     <>
-      <h1 className="text-5xl text-green-900 font-bold">Homepages</h1>
+      <KYCHome />
     </>
   );
 }
