@@ -1,4 +1,5 @@
 import { useState, memo } from "react";
+import { cn } from "../../utils/CN";
 
 export default function Home() {
   const cards = [
@@ -31,9 +32,9 @@ export default function Home() {
   return <FocusCards cards={cards} />;
 }
 
-function cn(...inputs) {
-  return inputs.filter(Boolean).join(" ");
-}
+// function cn(...inputs) {
+//   return inputs.filter(Boolean).join(" ");
+// }
 
 /* ---------- Card ---------- */
 const Card = memo(({ card, index, hovered, setHovered }) => (

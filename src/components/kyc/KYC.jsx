@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { cn } from "../../utils/CN";
+
 import p1 from "../../assets/Clever.png";
 import p2 from "../../assets/Saver.png";
 import p3 from "../../assets/Simple.png";
 import p4 from "../../assets/Reliable.png";
 import p5 from "../../assets/Rising.png";
 import p6 from "../../assets/Convenient.png";
-
-function cn(...inputs) {
-  return inputs.filter(Boolean).join(" ");
-}
+import { TextGenerateEffect } from "./TextGenerateEffect";
+import TextType from "./TextType";
 
 export default function KYC() {
   const [hovered, setHovered] = useState(null);
 
-  /* ---------- Animation variants ---------- */
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,6 +39,10 @@ export default function KYC() {
       transition: { duration: 0.5, ease: "backOut" },
     },
   };
+
+  const tagline = `Know Your Compliance is an MPCB-partnered platform designed to
+              help industries track, analyze, and maintain environmental
+              compliance effortlessly across operations.`;
 
   const cards = [
     {
@@ -87,7 +90,6 @@ export default function KYC() {
   ];
 
   return (
-    /* ---- Replaced <section> with <div> (optional) ---- */
     <div className="relative overflow-hidden">
       <motion.div
         initial="hidden"
@@ -95,9 +97,7 @@ export default function KYC() {
         viewport={{ once: false, amount: 0.2 }}
         variants={containerVariants}
       >
-        {/* ---- Header (title + description) ---- */}
         <div className="max-w-screen-2xl mx-auto py-5 px-4 md:px-8 lg:px-12">
-          {/* Title – flush left, no extra padding */}
           <motion.h1
             className="text-left text-4xl md:text-6xl mb-4 font-bold text-blue-900 leading-tight"
             variants={itemVariants}
@@ -105,22 +105,29 @@ export default function KYC() {
             Know Your Compliance
           </motion.h1>
 
-          {/* Description – flush left */}
-          <motion.div
-            className="border-l-4 border-blue-800 pl-4 text-left"
-            variants={itemVariants}
-          >
-            <p className="text-blue-800 font-medium text-2xl">
-              “Know Your Compliance is an MPCB-partnered platform designed to
-              help industries track, analyze, and maintain environmental
-              compliance effortlessly across operations.”
-            </p>
-          </motion.div>
+          {/* <div className="border-l-5 border-blue-800 pl-4 text-left rounded">
+            <TextGenerateEffect
+              words={tagline}
+              className="text-blue-800 font-medium text-2xl leading-snug"
+            />
+          </div> */}
+
+          <div className="border-l-5 border-blue-800 pl-4 text-left rounded">
+            <TextType
+              text={[
+                "Know Your Compliance is an MPCB-partnered platform designed to help industries track, analyze, and maintain environmental compliance effortlessly across operations.",
+              ]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor={true}
+              cursorCharacter="|"
+              className="text-blue-800 font-medium text-2xl leading-snug"
+            />
+          </div>
         </div>
 
-        {/* ---- Cards container – wider & more spaced ---- */}
         <motion.div
-          className="flex flex-wrap justify-center items-stretch gap-8 py-12 max-w-screen-2xl mx-auto px-4 md:px-8 lg:px-12"
+          className="flex flex-wrap justify-center items-stretch gap-8 py-5 max-w-screen-2xl mx-auto px-4 md:px-8 lg:px-12"
           variants={containerVariants}
         >
           {cards.map((card, index) => (
