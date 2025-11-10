@@ -1,5 +1,5 @@
 import PixelBlast from "./PixelBlast";
-import home from "../../assets/home.png";
+import home from "../../assets/kyc.png";
 
 export default function KYCHome() {
   return (
@@ -39,10 +39,10 @@ export default function KYCHome() {
 
           {/* Text with Gradient on "Compliance" */}
           <div className="text-center md:text-left">
-            <h1 className="text-cyan-200 text-8xl font-bold leading-snug">
+            <h1 className="text-white text-8xl font-bold leading-snug">
               <span className="block md:inline">Know Your </span>
               <span
-                className="bg-gradient-to-r from-[#40ffaa] via-[#4079ff] to-[#40ffaa] bg-clip-text text-transparent inline-block"
+                className="bg-linear-to-r from-[#40ffaa] via-[#4079ff] to-[#40ffaa] bg-clip-text text-transparent inline-block"
                 style={{
                   backgroundImage: `linear-gradient(90deg, #40ffaa, #4079ff, #40ffaa, #4079ff, #40ffaa)`,
                   backgroundSize: "200% 100%",
