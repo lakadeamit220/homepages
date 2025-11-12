@@ -3,25 +3,17 @@ import home from "../../assets/kyc.png";
 
 export default function KYCHome() {
   return (
-    <div className="relative h-screen w-full bg-black overflow-hidden">
+    <div className="relative h-screen w-full bg-black overflow-hidden rounded-4xl">
       {/* Full-screen animated background */}
       <PixelBlast
         variant="circle"
         pixelSize={6}
         color="blue"
         patternScale={3}
-        patternDensity={1.2}
+        patternDensity={2}
         pixelSizeJitter={0.5}
-        enableRipples
-        rippleSpeed={0.4}
-        rippleThickness={0.12}
-        rippleIntensityScale={1.5}
-        liquid
-        liquidStrength={0.12}
-        liquidRadius={1.2}
-        liquidWobbleSpeed={5}
-        speed={0.6}
-        edgeFade={0.25}
+        speed={2}
+        edgeFade={0.1}
         transparent
       />
 
@@ -41,33 +33,13 @@ export default function KYCHome() {
           <div className="text-center md:text-left">
             <h1 className="text-white text-8xl font-bold leading-snug">
               <span className="block md:inline">Know Your </span>
-              <span
-                className="bg-linear-to-r from-[#40ffaa] via-[#4079ff] to-[#40ffaa] bg-clip-text text-transparent inline-block"
-                style={{
-                  backgroundImage: `linear-gradient(90deg, #40ffaa, #4079ff, #40ffaa, #4079ff, #40ffaa)`,
-                  backgroundSize: "200% 100%",
-                  animation: "gradientShift 3s ease infinite",
-                }}
-              >
+              <span className="bg-linear-to-r from-indigo-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
                 Compliance
               </span>
             </h1>
           </div>
         </div>
       </div>
-
-      {/* Optional: Add animation keyframes if not in global CSS */}
-      <style jsx>{`
-        @keyframes gradientShift {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-      `}</style>
     </div>
   );
 }

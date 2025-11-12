@@ -1,86 +1,49 @@
-import { useState, memo } from "react";
-import { cn } from "../../utils/CN";
+import PixelBlast from "./PixelBlast";
+import home from "../../assets/kyc.png";
 
-export default function Home() {
-  const cards = [
-    {
-      title: "Forest Adventure",
-      src: "https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Valley of life",
-      src: "https://images.unsplash.com/photo-1600271772470-359e7d316be0?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Sala behta hi jayega",
-      src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Camping is for pros",
-      src: "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "The road not taken",
-      src: "https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "The First Rule",
-      src: "https://assets.aceternity.com/the-first-rule.png",
-    },
-  ];
-
-  return <FocusCards cards={cards} />;
-}
-
-// function cn(...inputs) {
-//   return inputs.filter(Boolean).join(" ");
-// }
-
-/* ---------- Card ---------- */
-const Card = memo(({ card, index, hovered, setHovered }) => (
-  <div
-    onMouseEnter={() => setHovered(index)}
-    onMouseLeave={() => setHovered(null)}
-    className={cn(
-      "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out",
-      hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
-    )}
-  >
-    <img
-      src={card.src}
-      alt={card.title}
-      className="object-cover absolute inset-0 w-full h-full"
-    />
-    <div
-      className={cn(
-        "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
-        hovered === index ? "opacity-100" : "opacity-0"
-      )}
-    >
-      <div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-linear-to-b from-neutral-50 to-neutral-200">
-        {card.title}
-      </div>
-    </div>
-  </div>
-));
-
-Card.displayName = "Card";
-
-/* ---------- FocusCards ---------- */
-function FocusCards({ cards }) {
-  const [hovered, setHovered] = useState(null);
-
+export default function KYCHome() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
-      {cards.map((card, index) => (
-        <Card
-          key={card.title}
-          card={card}
-          index={index}
-          hovered={hovered}
-          setHovered={setHovered}
-        />
-      ))}
+    <div className="relative h-screen w-full bg-black overflow-hidden">
+      {/* Full-screen animated background */}
+      <PixelBlast
+        variant="circle"
+        pixelSize={6}
+        color="blue"
+        patternScale={3}
+        patternDensity={1.2}
+        pixelSizeJitter={0.5}
+        enableRipples
+        rippleSpeed={0.4}
+        rippleThickness={0.12}
+        rippleIntensityScale={1.5}
+        speed={0.6}
+        edgeFade={0.25}
+        transparent
+      />
+
+      {/* Centered content */}
+      <div className="absolute inset-0 flex items-center justify-center z-10 px-6 md:px-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16 max-w-7xl w-full">
+          {/* Larger Image */}
+          <div className="shrink-0">
+            <img
+              src={home}
+              alt="Home"
+              className="h-80 w-auto sm:h-96 md:h-112 lg:h-128 object-contain drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Text with Gradient on "Compliance" */}
+          <div className="text-center md:text-left">
+            <h1 className="text-white text-8xl font-bold leading-snug">
+              <span className="block md:inline">Know Your </span>
+              <span className="bg-linear-to-r from-indigo-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
+                Compliance
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
